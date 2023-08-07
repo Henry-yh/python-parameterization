@@ -1,0 +1,35 @@
+from libs.crm_login_new import Crm_Login
+import pytest
+
+@pytest.mark.parametrize('x,y,z',[
+('18361402318','123456',0),
+('18361402318','1234567',-2)
+])
+def test_crm_login_new(x,y,z):
+
+    l = Crm_Login()
+    try:
+        r = l.crm_login_new(x,y)
+        assert r['code'] == z
+    except Exception as e:
+        raise e
+
+
+# 参数化 parametrize
+# parametrize有两个参数，第一个参数格式为字符串，第二个参数格式为列表,列表的元素为元组
+# @pytest.mark.parametrize('a,b',[(2,3),(5,6)])
+# def test_func1(a,b):
+#     print(a)
+#     print(b)
+
+# @pytest.mark.parametrize('x',[2,4])
+# def test_func1(x):
+#     print(x)
+
+
+
+
+if __name__ == '__main__':
+    # test_crm_login_new()
+    # func1(1,2)
+    pytest.main(['test_crm_login_new.py','-s']

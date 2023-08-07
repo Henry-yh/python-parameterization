@@ -1,0 +1,14 @@
+import requests
+
+from configs.config import host
+
+class Crm_Login_New:
+
+    def crm_login_new(self,x,y):
+        url = f'{host}/admin/login?username={x}&password={y}'
+        res = requests.get(url = url)
+        return res.json()
+
+if __name__ == '__main__':
+    l = Crm_Login_New()
+    print(l.crm_login_new('1831111111','1111111'))
